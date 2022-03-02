@@ -8,9 +8,60 @@ import {
 	Textarea,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import Posts from "../../Components/Posts";
+import { IoIosMenu } from "react-icons/io";
 
 import profilePic from "../../images/profilePic.png";
-import gatomalhadoPix from "../../images/gatomalhadoPix.png";
+
+const tempData = [
+	{
+		id: 1,
+		name: "Gato da Akatsuki",
+		picture:
+			"http://pm1.narvii.com/7368/53026bc6aeba0cefc84eb23aa14f2ba0da9345f3r1-2048-2048v2_uhq.jpg",
+		username: "@itachifelino",
+		tweet:
+			"O empenho em analisar a crescente influência da mídia desafia a capacidade de equalização de alternativas às soluções ortodoxas.",
+		postTime: "10s",
+	},
+	{
+		id: 2,
+		name: "Uzumaki Cusco",
+		picture:
+			"https://pbs.twimg.com/profile_images/1314600878339481608/MoNvoDCf_400x400.jpg",
+		username: "@cuscohokage",
+		tweet:
+			"É claro que a execução dos pontos do programa garante a contribuição de um grupo importante na determinação das condições financeiras e administrativas exigidas.",
+		postTime: "5min",
+	},
+	{
+		id: 3,
+		name: "Cacatua dos cria",
+		picture:
+			"https://i.pinimg.com/564x/fd/77/fa/fd77fa43c60d3af672459e807cc3b7c8.jpg",
+		username: "@2real5g",
+		tweet: "Passa um dólar",
+		postTime: "15min",
+	},
+	{
+		id: 4,
+		name: "Glauber, primo do Jorge",
+		picture:
+			"http://pm1.narvii.com/7270/7b9c1e0591a749f22530d6ef3bd9bf7583be4bdar1-321-321v2_00.jpg",
+		username: "@glauber",
+		tweet: "Então tranca a porta",
+		postTime: "20min",
+	},
+	{
+		id: 5,
+		name: "Jorge, primo do Glauber",
+		picture: "https://data.whicdn.com/images/302793971/original.jpg",
+		username: "@jorge",
+		tweet: "Entrarão na minha casa, roubarão tudo",
+		postTime: "25 min",
+	},
+];
+
 const Home = () => {
 	let [value, setValue] = useState("");
 
@@ -55,6 +106,7 @@ const Home = () => {
 					<Text margin={"8px"} color={"#828282"}>
 						{value.length}/140
 					</Text>
+
 					<Button
 						bgColor={"#00ACC1"}
 						color={"white"}
@@ -72,9 +124,15 @@ const Home = () => {
 				{""}
 			</Box>
 			<Box>
-				<Flex>
-					<Image src={gatomalhadoPix} mt={"16px"} ml={"30px"}></Image>
-				</Flex>
+				{tempData.map((tweet) => (
+					<Posts
+						name={tweet.name}
+						picture={tweet.picture}
+						username={tweet.username}
+						tweet={tweet.tweet}
+						postTime={tweet.postTime}
+					></Posts>
+				))}
 			</Box>
 		</>
 	);
