@@ -8,10 +8,10 @@ import {
 	Textarea,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import Posts from "../../Components/Posts";
+import Posts from "../Components/Posts";
 import { IoIosMenu } from "react-icons/io";
 
-import profilePic from "../../images/profilePic.png";
+import profilePic from "../images/profilePic.png";
 
 const tempData = [
 	{
