@@ -8,11 +8,11 @@ import {
 	InputRightElement,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
-import HideIcon from "./HideIcon";
-import ShowIcon from "./ShowIcon";
+import { forwardRef, useState } from "react";
 
-const Inputs = (props) => {
+import { BiHide, BiShow } from "react-icons/bi";
+
+const Inputs = forwardRef((props, ref) => {
 	const { children, password } = props;
 	const [show, setShow] = useState(false);
 	const handleClick = () => setShow(!show);
@@ -24,25 +24,30 @@ const Inputs = (props) => {
 				lineHeight={"16px"}
 				fontWeight={"600"}
 				mb={"8px"}
+				mt={"32px"}
+				alignItems={"center"}
 			>
 				{children}
 			</FormLabel>
 			<InputGroup
-				border="1px solid"
-				borderRadius={"4px"}
-				borderColor="#757575"
-				width={"368px"}
+				width={"100%"}
 				height="40px"
+				maxW={"368px"}
+				focusBorderColor="#00ACC1"
 			>
 				<Input
-					border={"none"}
-					placeholder={children}
+					border="1px solid"
+					borderRadius={"4px"}
+					borderColor="#757575"
+					// border={"none"}
+					placeholder={password ? "Senha" : children}
 					width={"100%"}
 					pl={"8px"}
 					pr={"8px"}
 					fontSize={"16px"}
 					lineHeight="24px"
 					type={password & show ? "password" : "text"}
+					ref={ref}
 				/>
 				<InputRightElement alignSelf={"center"} height={"100%"}>
 					<Button
@@ -53,12 +58,12 @@ const Inputs = (props) => {
 						backgroundColor="transparent"
 						pr={"10px"}
 					>
-						{show ? <HideIcon /> : <ShowIcon />}
+						{show ? <BiShow /> : <BiHide />}
 					</Button>
 				</InputRightElement>
 			</InputGroup>
 		</>
 	);
-};
+});
 
 export default Inputs;
