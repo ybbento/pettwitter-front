@@ -1,5 +1,83 @@
+import { Flex, Link, Text } from "@chakra-ui/react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import Inputs from "../Components/Input";
+import PawIcon from "../Components/PawIcon";
+import SignBtn from "../Components/Button";
+import { Link as ReachLink } from "react-router-dom";
 const Cadastro = () => {
-	return "Profile";
-};
+	// const auth = useAuth();  TODO
+	const { register, handleSubmit } = useForm();
+	const location = useLocation();
+	// const navigate = useNavigate();
 
+	// const from = location.state?.from?.pathname || "/";
+
+	// const onSubmit = (event) => {
+	// 	event.preventDefault();
+	// 	const formData = new FormData(event.currentTarget);
+	// 	const email = formData.get("email");
+	// 	const password = formData.get("password");
+	// 	const data = {
+	// 		email,
+	// 		password,
+	// 	};
+
+	// 	//   auth.login(data, () => {
+	// 	//     navigate(from, { replace: true });
+	// 	//   });
+	// };
+
+	return (
+		<>
+			<Flex
+				flexDirection={"column"}
+				ml="36px"
+				mr={"36px"}
+				mb={"80px"}
+				mt={"31.5px"}
+			>
+				<PawIcon width="76" height="76" ml="72px" margin></PawIcon>
+				<Text
+					fontWeight={"600"}
+					color={"#424242"}
+					fontSize={"20px"}
+					lineHeight={"32px"}
+				>
+					Cadastro
+				</Text>
+
+				<form onSubmit={handleSubmit()}>
+					<Inputs {...register("name")} placeholder="Nome">
+						Nome
+					</Inputs>
+
+					<Inputs {...register("email")} placeholder="E-mail">
+						E-mail
+					</Inputs>
+
+					<Inputs {...register("username")} placeholder="Ex.: @carlos1234">
+						Nome de usuário
+					</Inputs>
+
+					<Inputs {...register("password")} placeholder="Senha" password>
+						Senha
+					</Inputs>
+					<Text color={"#424242"} fontSize="12px" mt="4px">
+						Deve conter no mínimo um número e uma letra maiúscula{" "}
+					</Text>
+
+					<SignBtn>Cadastrar</SignBtn>
+
+					<Text fontSize={"16px"} mt="24px" mb={"80px"}>
+						Já Possui cadastro?{" "}
+						<Link as={ReachLink} to="/login" color={"#00ACC1"}>
+							Faça Login
+						</Link>
+					</Text>
+				</form>
+			</Flex>
+		</>
+	);
+};
 export default Cadastro;

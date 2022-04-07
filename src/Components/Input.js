@@ -13,7 +13,7 @@ import { forwardRef, useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 
 const Inputs = forwardRef((props, ref) => {
-	const { children, password } = props;
+	const { children, password, placeholder } = props;
 	const [show, setShow] = useState(false);
 	const handleClick = () => setShow(!show);
 
@@ -40,7 +40,7 @@ const Inputs = forwardRef((props, ref) => {
 					borderRadius={"4px"}
 					borderColor="#757575"
 					// border={"none"}
-					placeholder={password ? "Senha" : children}
+					placeholder={placeholder}
 					width={"100%"}
 					pl={"8px"}
 					pr={"8px"}
